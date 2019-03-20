@@ -1,0 +1,162 @@
+MariaDB (mysql) running on AWS RDS:
+
+host: a4.cxiyvutsdox7.us-east-1.rds.amazonaws.com
+username:pt365049
+password:Dark1010
+
+---------------------Mortgage Broker MBR--------------------------------
+	
+	database table: projectmbr
+	attributes:name, mortid, msid, value
+
+CREATE TABLE IF NOT EXISTS projectmbr (
+mortid int(5) NOT NULL AUTO_INCREMENT,
+name varchar(50) DEFAULT NULL,
+misid int(5) DEFAULT 0,
+mortvalue int(7) DEFAULT 0,
+email varchar(50) DEFAULT NULL,
+PRIMARY KEY(mortid)
+);
+
+------------------Insurance INSinc--------------------------------------
+
+	table:  projectinsinc
+	attributes:MIsID, Insured Value, Deductible, Name
+
+CREATE TABLE IF NOT EXISTS projectinsinc (
+misid int(5) DEFAULT 0,
+insuredvalue int(7) DEFAULT 0,
+deductible int(7) DEFAULT 0,
+PRIMARY KEY(misid)
+);
+
+INSERT INTO projectinsinc (misid, insuredvalue, deductible)
+VALUES ( 1, 500000, 5000);
+INSERT INTO projectinsinc (misid, insuredvalue, deductible)
+VALUES ( 2, 300000, 3000);
+INSERT INTO projectinsinc (misid, insuredvalue, deductible)
+VALUES ( 3, 450000, 4500);
+INSERT INTO projectinsinc (misid, insuredvalue, deductible)
+VALUES ( 4, 588000, 5080);
+
+MariaDB [assignment4]> select * from projectinsinc;
++-------+--------------+------------+
+| misid | insuredvalue | deductible |
++-------+--------------+------------+
+|     1 |       500000 |       5000 |
+|     2 |       300000 |       3000 |
+|     3 |       450000 |       4500 |
+|     4 |       588000 |       5080 |
++-------+--------------+------------+
+
+------------Employer EMP-------------------------------------------------
+
+	table: projectemp
+	attributes:Name, Salary, Start of Employment(YYYY)
+
+CREATE TABLE IF NOT EXISTS projectemp (
+empid int(5) NOT NULL AUTO_INCREMENT,
+name varchar(50) DEFAULT NULL,
+salary int(5) DEFAULT 0,
+startdate year DEFAULT NULL,
+PRIMARY KEY(empid)
+ );
+
+
+INSERT INTO projectemp (name, salary, startdate)
+VALUES ( 'Bob Smith', 75000, 1998)
+INSERT INTO projectemp (name, salary, startdate)
+VALUES ( 'Doug Smith', 79000, 1994);
+INSERT INTO projectemp (name, salary, startdate)
+VALUES ( 'Mike Ross', 85000, 2012);
+INSERT INTO projectemp (name, salary, startdate)
+VALUES ( 'Tom Sawyer', 45000, 2014);
+
+MariaDB [assignment4]> SELECT * FROM projectemp;
++-------+------------+--------+-----------+
+| empid | name       | salary | startdate |
++-------+------------+--------+-----------+
+|     1 | Bob Smith  |  50000 |      2008 |
+|     2 | Bob Smith  |  75000 |      1998 |
+|     3 | Doug Smith |  79000 |      1994 |
+|     4 | Mike Ross  |  85000 |      2012 |
+|     5 | Tom Sawyer |  45000 |      2014 |
++-------+------------+--------+-----------+
+
+----------------Municiality MUN--------------------------------------------
+
+	table: projectmun
+	attributes: MIsID, Utilities Code
+
+CREATE TABLE IF NOT EXISTS projectmun (
+misid int(5) DEFAULT 0,
+code int(5) DEFAULT 0,
+PRIMARY KEY(misid));
+
+
+INSERT INTO projectmun (misid, code)
+VALUES ( 1,1011);
+INSERT INTO projectmun (misid, code)
+VALUES ( 2,1111);
+INSERT INTO projectmun (misid, code)
+VALUES ( 3,1001);
+INSERT INTO projectmun (misid, code)
+VALUES ( 4,1011);
+INSERT INTO projectmun (misid, code)
+VALUES ( 5,0101);
+INSERT INTO projectmun (misid, code)
+VALUES ( 6,1111);
+INSERT INTO projectmun (misid, code)
+VALUES ( 7,1001);
+
+MariaDB [assignment4]> select * from projectmun;
++-------+------+
+| misid | code |
++-------+------+
+|     1 | 1011 |
+|     2 |  101 |
+|     3 | 1001 |
+|     4 | 1011 |
+|     5 |  101 |
+|     6 | 1111 |
+|     7 | 1001 |
++-------+------+
+
+-----------------------Real Estate RE------------------------------------
+
+	table: projectre
+	attributes: MIsID, Name, MortID, AppraisedValue,
+
+CREATE TABLE IF NOT EXISTS projectre (
+misid int(5) DEFAULT 0,
+appraisedvalue int(8) DEFAULT NULL,
+PRIMARY KEY(misid));
+
+INSERT INTO projectre (misid, appraisedvalue)
+VALUES ( 1,670000);
+INSERT INTO projectre (misid, appraisedvalue)
+VALUES ( 2,540000);
+INSERT INTO projectre (misid, appraisedvalue)
+VALUES ( 4,980000);
+INSERT INTO projectre (misid, appraisedvalue)
+VALUES ( 5,350000);
+INSERT INTO projectre (misid, appraisedvalue)
+VALUES ( 6,550000);
+INSERT INTO projectre (misid, appraisedvalue)
+VALUES ( 7,450000);
+
+MariaDB [assignment4]> select * from projectre
+    -> ;
++-------+----------------+
+| misid | appraisedvalue |
++-------+----------------+
+|     1 |         670000 |
+|     2 |         540000 |
+|     4 |         980000 |
+|     5 |         350000 |
+|     6 |         550000 |
+|     7 |         450000 |
++-------+----------------+
+
+
+
